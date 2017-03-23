@@ -1,10 +1,13 @@
 FROM hypriot/rpi-python
 
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential
 
-ADD ./package.json ./
-RUN apt-get update && apt-get install -y
-ADD ./app.js ./
-EXPOSE 9000
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
 
-CMD ["node", "./app.js"]
+EXPOSE 9001
+CMD ["app.py"]
 

@@ -8,6 +8,6 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
 
-EXPOSE 5000
+EXPOSE 9001
 CMD ["app.py"]
 

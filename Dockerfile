@@ -1,7 +1,14 @@
-FROM hypriot/rpi-python
+#FROM hypriot/rpi-python
+#FROM resin/rpi-raspbian:latest
+FROM rickryan/rpi-jessie-opencv3.2:latest
 
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
+#RUN apt-get update -y
+#RUN apt-get install -y \
+#	python-pip 
+#	python-dev \
+#	build-essential 
+#	python-opencv \
+#	python-numpy
 
 COPY . /app
 WORKDIR /app

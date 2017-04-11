@@ -1,0 +1,2 @@
+curl http://localhost:9001/rest2fs -H "Content-Type: application/json" -d @sign-giving-order-maximum-speed.json 
+curl http://localhost:9001/fs2rest -H "Content-Type: application/json" -d '{"filename": "/tmp/sign-40.jpg"}'

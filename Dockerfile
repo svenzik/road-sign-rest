@@ -5,9 +5,9 @@ FROM rickryan/rpi-jessie-opencv3.2:latest
 #RUN apt-get update -y && apt-get install -y \
 #	python-flask \
 #	python-click
-#	python-pip 
+#	python-pip
 #	python-dev \
-#	build-essential 
+#	build-essential
 #	python-opencv \
 #	python-numpy
 
@@ -18,5 +18,4 @@ RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
 
 EXPOSE 9001
-CMD ["app.py"]
-
+CMD ["app.py", "/benchmark-data"]

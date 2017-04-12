@@ -4,14 +4,14 @@ import socket
 
 #import cv2
 
-def get_request_rest_image_data(request):
+def get_request_rest_image_data(request, volume_dir):
     json_data = request.get_json()
     filename = json_data['filename']
 
     if 'image' in json_data:
         image_data = base64.b64decode(json_data['image'])
     else:
-        image_data = read_image_from_disk(filename)
+        image_data = read_image_from_disk(volume_dir, filename)
 
     result = {
         'image_filename': filename,
@@ -32,15 +32,16 @@ def create_response(image_location, image = None):
         result['image'] = base64.b64encode(image)
     return result
 
-def save_image_to_disk(image_data):
-    file_path = '/tmp/' + image_data['image_filename']
+def save_image_to_disk(volume_dir, image_data):
+    file_path = volume_dir + '/' + image_data['image_filename']
     print "Write image to " + file_path
     f = open(file_path, 'wb')
     f.write(image_data['image'])
     f.close()
     return file_path
 
-def read_image_from_disk(file_path):
+def read_image_from_disk(volume_dir, file_name):
+    file_path = volume_dir + '/' +file_name
     print "Read image from: " + file_path
     f = open(file_path, 'rb')
     image_data = f.read()

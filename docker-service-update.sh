@@ -1,7 +1,7 @@
 
 version=latest
 if [ ! -z "$1" ]; then
-  version = $1
+  version=$1
 fi
 
 git pull

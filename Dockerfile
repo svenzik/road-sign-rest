@@ -2,8 +2,8 @@
 #FROM resin/rpi-raspbian:latest
 FROM rickryan/rpi-jessie-opencv3.2:latest
 
-#RUN apt-get update -y && apt-get install -y \
-#	python-flask \
+RUN apt-get update -y && apt-get install -y \
+  python-flask
 #	python-click
 #	python-pip
 #	python-dev \
@@ -14,7 +14,7 @@ FROM rickryan/rpi-jessie-opencv3.2:latest
 COPY . /app
 WORKDIR /app
 #RUN pip search opencv
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
 
 EXPOSE 9001

@@ -12,4 +12,7 @@ docker build \
   -t svenzik/road-sign-rest:$version \
   .
 
+docker push svenzik/road-sign-rest:$version
+docker push svenzik/road-sign-rest
+
 docker service update --image svenzik/road-sign-rest:$version py-rsr

@@ -1,0 +1,40 @@
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        127.0.0.1
+Server Port:            9001
+
+Document Path:          /rest2fs
+Document Length:        192 bytes
+
+Concurrency Level:      1
+Time taken for tests:   43.852 seconds
+Complete requests:      100
+Failed requests:        0
+Non-2xx responses:      100
+Total transferred:      34000 bytes
+Total body sent:        139729500
+HTML transferred:       19200 bytes
+Requests per second:    2.28 [#/sec] (mean)
+Time per request:       438.516 [ms] (mean)
+Time per request:       438.516 [ms] (mean, across all concurrent requests)
+Transfer rate:          0.76 [Kbytes/sec] received
+                        3111.74 kb/s sent
+                        3112.50 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    5   2.5      5      13
+Processing:   292  433  87.7    416     698
+Waiting:       83  135  36.8    128     253
+Total:        299  438  87.0    423     701
+
+Percentage of the requests served within a certain time (ms)
+  50%    423
+  66%    460
+  75%    502
+  80%    524
+  90%    562
+  95%    594
+  98%    658
+  99%    701
+ 100%    701 (longest request)
+

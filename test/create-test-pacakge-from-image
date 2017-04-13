@@ -1,0 +1,19 @@
+#!/bin/bash
+
+for param in "$@"
+do
+    echo "$param"
+    dir=${param%.*}
+    mkdir $dir
+    for i in {1..10}; do
+    	#printf '{"filename": "%s", "image": "%s"}\n' "$i-$param" `base64 $param` > $dir/$i-${param}.json
+	img=`base64 $param`
+
+cat <<EOF > $dir/$i-${param}.json
+{
+	"filename" : "$i-$param",
+	"image": "$img"
+}
+EOF
+    done
+done

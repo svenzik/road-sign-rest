@@ -7,7 +7,7 @@ do
     mkdir $dir
     for i in {1..10}; do
     	#printf '{"filename": "%s", "image": "%s"}\n' "$i-$param" `base64 $param` > $dir/$i-${param}.json
-	img=`base64 $param`
+	img=`base64 $param | tr -d '\n'`
 
 cat <<EOF > $dir/$i-${param}.json
 {

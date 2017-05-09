@@ -20,8 +20,8 @@ app = Flask(__name__)
 def index():
     return jsonify({'uuid': uuid.uuid4(),'hostname': socket.gethostname()})
 
-@app.route('/fs2fs')
-def fs2fs():
+@app.route('/version')
+def version():
     return jsonify({'uuid': uuid.uuid4(),'hostname': socket.gethostname()})
 
 @app.route('/fs2rest', methods=['POST'])

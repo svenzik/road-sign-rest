@@ -15,4 +15,7 @@ docker build \
 docker push svenzik/road-sign-rest:$version
 docker push svenzik/road-sign-rest
 
+echo Running: docker service update --image svenzik/road-sign-rest:$version py-rsr
 docker service update --image svenzik/road-sign-rest:$version py-rsr
+
+docker service ps py-rsr

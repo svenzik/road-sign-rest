@@ -7,6 +7,12 @@ import re
 
 # haarCascade = cv2.CascadeClassifier('road-signs-haar-cascade.xml')
 
+detector = None
+try:
+    detector = cv2.ORB_create()
+except AttributeError:
+    detector = cv2.ORB()
+
 def detect_road_signs(image, haarCascade):
     return haarCascade.detectMultiScale(image, 1.1, 3)
 
@@ -66,7 +72,7 @@ def run_flann(img, compare_images):
 
     flann = cv2.FlannBasedMatcher(index_params,search_params)
 
-    _, des = cv2.ORB().detectAndCompute(img, None)
+    _, des = detector.detectAndCompute(img, None)
     if des is None:
         return "Unknown", 0
     if len(des) < MINKP:
@@ -106,7 +112,7 @@ def run_bf(img, compare_images):
     MINKP = 5
 
     FLANNTHRESHOLD=80
-    kp, des = cv2.ORB().detectAndCompute(img, None)
+    kp, des = detector.detectAndCompute(img, None)
 
     if des is None:
         return "Unknown", 0
@@ -295,7 +301,7 @@ def get_image_matches(img1, img2):
         print("Image2 not found")
 
     # Initiate SIFT detector
-    orb = cv2.ORB()
+    orb = detector
 
     # find the keypoints and descriptors with SIFT
     kp1, des1 = orb.detectAndCompute(img1,None)
@@ -327,7 +333,7 @@ def get_image_knn_matches(img1, img2):
     img1 = cv2.bitwise_not(thresh)
 
     # Initiate SIFT detector
-    orb = cv2.ORB()
+    orb = detector
 
     # find the keypoints and descriptors with SIFT
     kp1, des1 = orb.detectAndCompute(img1,None)

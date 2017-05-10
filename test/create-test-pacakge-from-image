@@ -1,11 +1,13 @@
 #!/bin/bash
 
+count=1
+
 for param in "$@"
 do
     echo "$param"
     dir=${param%.*}
     mkdir $dir
-    for i in {1..10}; do
+    for (( i=1; i<=$count; i++ )); do
     	#printf '{"filename": "%s", "image": "%s"}\n' "$i-$param" `base64 $param` > $dir/$i-${param}.json
 	img=`base64 $param | tr -d '\n'`
 

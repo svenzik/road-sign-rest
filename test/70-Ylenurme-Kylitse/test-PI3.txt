@@ -1,0 +1,280 @@
+testing file: 1-70-Ylenurme-Kylitse.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9001
+
+Document Path:          /rest2fs
+Document Length:        143 bytes
+
+Concurrency Level:      1
+Time taken for tests:   37.552 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      28900 bytes
+Total body sent:        22032300
+HTML transferred:       14300 bytes
+Requests per second:    2.66 [#/sec] (mean)
+Time per request:       375.518 [ms] (mean)
+Time per request:       375.518 [ms] (mean, across all concurrent requests)
+Transfer rate:          0.75 [Kbytes/sec] received
+                        572.97 kb/s sent
+                        573.72 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        6    9   1.3      9      14
+Processing:   311  366  85.5    350    1117
+Waiting:       65  104  81.5     94     874
+Total:        319  375  85.5    359    1127
+
+Percentage of the requests served within a certain time (ms)
+  50%    359
+  66%    368
+  75%    373
+  80%    377
+  90%    415
+  95%    469
+  98%    561
+  99%   1127
+ 100%   1127 (longest request)
+testing file: 1-70-Ylenurme-Kylitse.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9002
+
+Document Path:          /rest2fs
+Document Length:        143 bytes
+
+Concurrency Level:      1
+Time taken for tests:   19.725 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      28900 bytes
+Total body sent:        22032300
+HTML transferred:       14300 bytes
+Requests per second:    5.07 [#/sec] (mean)
+Time per request:       197.252 [ms] (mean)
+Time per request:       197.252 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.43 [Kbytes/sec] received
+                        1090.79 kb/s sent
+                        1092.22 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    3   0.7      2       6
+Processing:   174  195  12.3    193     248
+Waiting:       34   54   9.5     52      96
+Total:        177  197  12.4    197     250
+WARNING: The median and mean for the initial connection time are not within a normal deviation
+        These results are probably not that reliable.
+
+Percentage of the requests served within a certain time (ms)
+  50%    197
+  66%    202
+  75%    205
+  80%    205
+  90%    210
+  95%    215
+  98%    245
+  99%    250
+ 100%    250 (longest request)
+testing file: 1-70-Ylenurme-Kylitse.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9001
+
+Document Path:          /s2img
+Document Length:        65655 bytes
+
+Concurrency Level:      1
+Time taken for tests:   93.567 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      6580300 bytes
+Total body sent:        22032100
+HTML transferred:       6565500 bytes
+Requests per second:    1.07 [#/sec] (mean)
+Time per request:       935.668 [ms] (mean)
+Time per request:       935.668 [ms] (mean, across all concurrent requests)
+Transfer rate:          68.68 [Kbytes/sec] received
+                        229.95 kb/s sent
+                        298.63 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        6   11   1.8     11      18
+Processing:   833  925 140.8    903    1936
+Waiting:      516  594 132.9    572    1579
+Total:        843  936 140.9    914    1949
+
+Percentage of the requests served within a certain time (ms)
+  50%    914
+  66%    931
+  75%    940
+  80%    947
+  90%    990
+  95%   1072
+  98%   1745
+  99%   1949
+ 100%   1949 (longest request)
+testing file: 1-70-Ylenurme-Kylitse.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9002
+
+Document Path:          /s2img
+Document Length:        65655 bytes
+
+Concurrency Level:      1
+Time taken for tests:   106.262 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      6580300 bytes
+Total body sent:        22032100
+HTML transferred:       6565500 bytes
+Requests per second:    0.94 [#/sec] (mean)
+Time per request:       1062.623 [ms] (mean)
+Time per request:       1062.623 [ms] (mean, across all concurrent requests)
+Transfer rate:          60.47 [Kbytes/sec] received
+                        202.48 kb/s sent
+                        262.95 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    4   2.7      3      26
+Processing:   688 1059 117.7   1104    1514
+Waiting:      516  881 115.9    924    1336
+Total:        691 1063 117.8   1107    1517
+
+Percentage of the requests served within a certain time (ms)
+  50%   1107
+  66%   1120
+  75%   1128
+  80%   1135
+  90%   1151
+  95%   1166
+  98%   1208
+  99%   1517
+ 100%   1517 (longest request)
+testing file: 1-70-Ylenurme-Kylitse.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9001
+
+Document Path:          /s2speed
+Document Length:        6725 bytes
+
+Concurrency Level:      1
+Time taken for tests:   111.869 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      687200 bytes
+Total body sent:        22032300
+HTML transferred:       672500 bytes
+Requests per second:    0.89 [#/sec] (mean)
+Time per request:       1118.688 [ms] (mean)
+Time per request:       1118.688 [ms] (mean, across all concurrent requests)
+Transfer rate:          6.00 [Kbytes/sec] received
+                        192.33 kb/s sent
+                        198.33 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        7   11   2.1     10      24
+Processing:  1042 1108  43.4   1104    1307
+Waiting:      782  843  37.8    841     993
+Total:       1052 1119  43.6   1116    1325
+
+Percentage of the requests served within a certain time (ms)
+  50%   1116
+  66%   1128
+  75%   1142
+  80%   1151
+  90%   1163
+  95%   1197
+  98%   1248
+  99%   1325
+ 100%   1325 (longest request)
+testing file: 1-70-Ylenurme-Kylitse.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9002
+
+Document Path:          /s2speed
+Document Length:        6725 bytes
+
+Concurrency Level:      1
+Time taken for tests:   137.503 seconds
+Complete requests:      100
+Failed requests:        1
+   (Connect: 0, Receive: 0, Length: 1, Exceptions: 0)
+Non-2xx responses:      1
+Total transferred:      687819 bytes
+Total body sent:        22032300
+HTML transferred:       673074 bytes
+Requests per second:    0.73 [#/sec] (mean)
+Time per request:       1375.031 [ms] (mean)
+Time per request:       1375.031 [ms] (mean, across all concurrent requests)
+Transfer rate:          4.88 [Kbytes/sec] received
+                        156.48 kb/s sent
+                        161.36 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    3   1.0      3       7
+Processing:   905 1372 251.0   1462    1670
+Waiting:      763 1224 252.9   1323    1530
+Total:        907 1375 251.1   1466    1672
+
+Percentage of the requests served within a certain time (ms)
+  50%   1466
+  66%   1590
+  75%   1606
+  80%   1613
+  90%   1622
+  95%   1643
+  98%   1667
+  99%   1672
+ 100%   1672 (longest request)

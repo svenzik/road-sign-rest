@@ -1,0 +1,32 @@
+PI3-large image
+
+44K	    ../120kmh/1-120kmh.jpg.json
+112K	../france-multiple/1-france-multiple.jpg.json
+20K	    ../turkey-three/1-turkey-three.jpg.json
+692K	../50kmh/1-50kmh.jpg.json
+
+
+quess speed:
+svenzik@AS400:~/Semester2/mobile-seminar/project/road-sign-rest/test$ time ./road-sign-rest-client.sh s2speed 50kmh/1-50kmh.jpg.json 
+Connecting to http://raspberrypi-m2:9001/s2speed
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  700k  100 11485  100  688k    531  32638  0:00:21  0:00:21 --:--:--     0
+  "speed": "90(90,)"
+base64: invalid input
+
+real	0m21.667s
+user	0m0.032s
+sys	0m0.036s
+svenzik@AS400:~/Semester2/mobile-seminar/project/road-sign-rest/test$ time ./road-sign-rest-client.sh s2img 50kmh/1-50kmh.jpg.json 
+Connecting to http://raspberrypi-m2:9001/s2img
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  753k  100 65655  100  688k   5678  61019  0:00:11  0:00:11 --:--:--     0
+  "speed": "-"
+base64: invalid input
+
+real	0m11.614s
+user	0m0.032s
+sys	0m0.036s
+

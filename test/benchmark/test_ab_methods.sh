@@ -39,7 +39,8 @@ do
 	CSV_FILE=${json_file}_1t.csv
 	ab -c 1 -g ${CSV_FILE} -n $BATCH_SIZE -T "application/json" -p ${json_file} ${URL}
 	FILE_NAME=`basename $CSV_FILE`
-	tail -n +2 $CSV_FILE | sed -e "s/^/$URL\t$FILE_NAME\t/g" >> $RESULT_FILE
+	URL_ESCAPE=`echo $URL | sed -e 's/\//_/g;s/:/./g'`
+	tail -n +2 $CSV_FILE | sed -e "s/^/$URL_ESCAPE\t$FILE_NAME\t/g" >> $RESULT_FILE
 	rm $CSV_FILE
 	
 	###CSV_FILE=${json_file}-2t.csv

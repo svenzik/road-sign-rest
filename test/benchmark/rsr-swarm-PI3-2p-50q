@@ -1,0 +1,302 @@
+swarm-PI3 2processes x 50 queries
+
+110,110, idle 46%
+140,115, idle 35%
+
+###############################
+P1
+###############################
+
+svenzik@AS400:~/Semester2/mobile-seminar/project/road-sign-rest/test/benchmark$ ./test_ab_batch.sh ../120kmh/1-120kmh.jpg.json ../turkey-three/1-turkey-three.jpg.json ../france-multiple/1-france-multiple.jpg.json
+testing file: ../120kmh/1-120kmh.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.83.200 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        192.168.83.200
+Server Port:            9001
+
+Document Path:          /s2speed
+Document Length:        10997 bytes
+
+Concurrency Level:      1
+Time taken for tests:   43.139 seconds
+Complete requests:      50
+Failed requests:        43
+   (Connect: 0, Receive: 0, Length: 43, Exceptions: 0)
+Total transferred:      564330 bytes
+Total body sent:        2181850
+HTML transferred:       556930 bytes
+Requests per second:    1.16 [#/sec] (mean)
+Time per request:       862.785 [ms] (mean)
+Time per request:       862.785 [ms] (mean, across all concurrent requests)
+Transfer rate:          12.77 [Kbytes/sec] received
+                        49.39 kb/s sent
+                        62.17 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        6   10   4.2      9      21
+Processing:   818  853  31.2    839     938
+Waiting:      771  806  27.3    798     890
+Total:        827  863  32.4    848     953
+
+Percentage of the requests served within a certain time (ms)
+  50%    848
+  66%    866
+  75%    883
+  80%    890
+  90%    908
+  95%    933
+  98%    953
+  99%    953
+ 100%    953 (longest request)
+testing file: ../turkey-three/1-turkey-three.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.83.200 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        192.168.83.200
+Server Port:            9001
+
+Document Path:          /s2speed
+Document Length:        18512 bytes
+
+Concurrency Level:      1
+Time taken for tests:   46.816 seconds
+Complete requests:      50
+Failed requests:        30
+   (Connect: 0, Receive: 0, Length: 30, Exceptions: 0)
+Total transferred:      1086872 bytes
+Total body sent:        874950
+HTML transferred:       1079474 bytes
+Requests per second:    1.07 [#/sec] (mean)
+Time per request:       936.310 [ms] (mean)
+Time per request:       936.310 [ms] (mean, across all concurrent requests)
+Transfer rate:          22.67 [Kbytes/sec] received
+                        18.25 kb/s sent
+                        40.92 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        5   11   7.0      9      47
+Processing:   878  925  87.9    909    1514
+Waiting:      863  903  86.9    888    1491
+Total:        885  936  88.8    918    1524
+
+Percentage of the requests served within a certain time (ms)
+  50%    918
+  66%    937
+  75%    948
+  80%    951
+  90%    966
+  95%    985
+  98%   1524
+  99%   1524
+ 100%   1524 (longest request)
+testing file: ../france-multiple/1-france-multiple.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.83.200 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        192.168.83.200
+Server Port:            9001
+
+Document Path:          /s2speed
+Document Length:        9369 bytes
+
+Concurrency Level:      1
+Time taken for tests:   95.849 seconds
+Complete requests:      50
+Failed requests:        37
+   (Connect: 0, Receive: 0, Length: 37, Exceptions: 0)
+Non-2xx responses:      2
+Total transferred:      734216 bytes
+Total body sent:        5718350
+HTML transferred:       726745 bytes
+Requests per second:    0.52 [#/sec] (mean)
+Time per request:       1916.976 [ms] (mean)
+Time per request:       1916.976 [ms] (mean, across all concurrent requests)
+Transfer rate:          7.48 [Kbytes/sec] received
+                        58.26 kb/s sent
+                        65.74 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        6   15  15.9     11     118
+Processing:  1760 1902 124.6   1892    2574
+Waiting:     1565 1664 122.2   1645    2391
+Total:       1766 1917 127.0   1903    2587
+
+Percentage of the requests served within a certain time (ms)
+  50%   1903
+  66%   1949
+  75%   1967
+  80%   1980
+  90%   2024
+  95%   2088
+  98%   2587
+  99%   2587
+ 100%   2587 (longest request)
+
+
+####################
+P2
+####################
+
+svenzik@AS400:~/Semester2/mobile-seminar/project/road-sign-rest/test/benchmark$ ./test_ab_batch.sh ../120kmh/1-120kmh.jpg.json ../turkey-three/1-turkey-three.jpg.json ../france-multiple/1-france-multiple.jpg.json
+testing file: ../120kmh/1-120kmh.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.83.200 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        192.168.83.200
+Server Port:            9001
+
+Document Path:          /s2speed
+Document Length:        10999 bytes
+
+Concurrency Level:      1
+Time taken for tests:   44.020 seconds
+Complete requests:      50
+Failed requests:        7
+   (Connect: 0, Receive: 0, Length: 7, Exceptions: 0)
+Total transferred:      557336 bytes
+Total body sent:        2181850
+HTML transferred:       549936 bytes
+Requests per second:    1.14 [#/sec] (mean)
+Time per request:       880.398 [ms] (mean)
+Time per request:       880.398 [ms] (mean, across all concurrent requests)
+Transfer rate:          12.36 [Kbytes/sec] received
+                        48.40 kb/s sent
+                        60.77 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        6   11   5.2      9      27
+Processing:   830  869  30.7    861     939
+Waiting:      771  821  28.1    811     886
+Total:        837  880  32.8    874     949
+
+Percentage of the requests served within a certain time (ms)
+  50%    874
+  66%    887
+  75%    901
+  80%    912
+  90%    937
+  95%    945
+  98%    949
+  99%    949
+ 100%    949 (longest request)
+testing file: ../turkey-three/1-turkey-three.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.83.200 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        192.168.83.200
+Server Port:            9001
+
+Document Path:          /s2speed
+Document Length:        27084 bytes
+
+Concurrency Level:      1
+Time taken for tests:   47.778 seconds
+Complete requests:      50
+Failed requests:        48
+   (Connect: 0, Receive: 0, Length: 48, Exceptions: 0)
+Total transferred:      1138378 bytes
+Total body sent:        874950
+HTML transferred:       1130978 bytes
+Requests per second:    1.05 [#/sec] (mean)
+Time per request:       955.561 [ms] (mean)
+Time per request:       955.561 [ms] (mean, across all concurrent requests)
+Transfer rate:          23.27 [Kbytes/sec] received
+                        17.88 kb/s sent
+                        41.15 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        6   10   4.8      8      24
+Processing:   887  946 116.5    927    1736
+Waiting:      869  921 117.3    906    1718
+Total:        894  955 117.0    938    1746
+
+Percentage of the requests served within a certain time (ms)
+  50%    938
+  66%    950
+  75%    955
+  80%    966
+  90%    985
+  95%    992
+  98%   1746
+  99%   1746
+ 100%   1746 (longest request)
+testing file: ../france-multiple/1-france-multiple.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.168.83.200 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        192.168.83.200
+Server Port:            9001
+
+Document Path:          /s2speed
+Document Length:        17584 bytes
+
+Concurrency Level:      1
+Time taken for tests:   96.783 seconds
+Complete requests:      50
+Failed requests:        28
+   (Connect: 0, Receive: 0, Length: 28, Exceptions: 0)
+Non-2xx responses:      5
+Total transferred:      734041 bytes
+Total body sent:        5718350
+HTML transferred:       726434 bytes
+Requests per second:    0.52 [#/sec] (mean)
+Time per request:       1935.663 [ms] (mean)
+Time per request:       1935.663 [ms] (mean, across all concurrent requests)
+Transfer rate:          7.41 [Kbytes/sec] received
+                        57.70 kb/s sent
+                        65.11 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        5   16  19.0     12     132
+Processing:  1753 1919 145.1   1905    2568
+Waiting:     1585 1670 109.0   1657    2386
+Total:       1761 1936 147.4   1925    2593
+
+Percentage of the requests served within a certain time (ms)
+  50%   1925
+  66%   1944
+  75%   1961
+  80%   1980
+  90%   2018
+  95%   2068
+  98%   2593
+  99%   2593
+ 100%   2593 (longest request)
+

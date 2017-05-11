@@ -1,0 +1,282 @@
+svenzik@AS400:~/Semester2/mobile-seminar/project/road-sign-rest/test/120kmh$ ../benchmark/test_ab_methods.sh http://raspberrypi-m2:9001/rest2fs http://raspberrypi-m2:9002/rest2fs http://raspberrypi-m2:9001/s2img http://raspberrypi-m2:9002/s2img http://raspberrypi-m2:9001/s2speed http://raspberrypi-m2:9002/s2speed
+testing file: 1-120kmh.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9001
+
+Document Path:          /rest2fs
+Document Length:        130 bytes
+
+Concurrency Level:      1
+Time taken for tests:   9.357 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      27600 bytes
+Total body sent:        4363700
+HTML transferred:       13000 bytes
+Requests per second:    10.69 [#/sec] (mean)
+Time per request:       93.574 [ms] (mean)
+Time per request:       93.574 [ms] (mean, across all concurrent requests)
+Transfer rate:          2.88 [Kbytes/sec] received
+                        455.41 kb/s sent
+                        458.29 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        5    9   1.0      8      13
+Processing:    70   85  31.9     79     364
+Waiting:       33   53  31.6     48     325
+Total:         77   93  32.0     88     373
+
+Percentage of the requests served within a certain time (ms)
+  50%     88
+  66%     90
+  75%     91
+  80%     92
+  90%     98
+  95%    120
+  98%    183
+  99%    373
+ 100%    373 (longest request)
+testing file: 1-120kmh.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9002
+
+Document Path:          /rest2fs
+Document Length:        130 bytes
+
+Concurrency Level:      1
+Time taken for tests:   4.826 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      27600 bytes
+Total body sent:        4363700
+HTML transferred:       13000 bytes
+Requests per second:    20.72 [#/sec] (mean)
+Time per request:       48.261 [ms] (mean)
+Time per request:       48.261 [ms] (mean, across all concurrent requests)
+Transfer rate:          5.58 [Kbytes/sec] received
+                        882.99 kb/s sent
+                        888.58 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    3   0.8      2       8
+Processing:    39   46   3.6     45      56
+Waiting:       24   32   3.6     31      44
+Total:         41   48   3.7     48      59
+WARNING: The median and mean for the initial connection time are not within a normal deviation
+        These results are probably not that reliable.
+
+Percentage of the requests served within a certain time (ms)
+  50%     48
+  66%     50
+  75%     51
+  80%     52
+  90%     54
+  95%     55
+  98%     56
+  99%     59
+ 100%     59 (longest request)
+testing file: 1-120kmh.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9001
+
+Document Path:          /s2img
+Document Length:        131191 bytes
+
+Concurrency Level:      1
+Time taken for tests:   45.794 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      13134000 bytes
+Total body sent:        4363500
+HTML transferred:       13119100 bytes
+Requests per second:    2.18 [#/sec] (mean)
+Time per request:       457.942 [ms] (mean)
+Time per request:       457.942 [ms] (mean, across all concurrent requests)
+Transfer rate:          280.08 [Kbytes/sec] received
+                        93.05 kb/s sent
+                        373.13 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        5   10   1.4      9      14
+Processing:   394  448 100.4    435    1410
+Waiting:      233  274  95.8    259    1194
+Total:        402  458 100.4    444    1418
+
+Percentage of the requests served within a certain time (ms)
+  50%    444
+  66%    452
+  75%    461
+  80%    466
+  90%    493
+  95%    509
+  98%    527
+  99%   1418
+ 100%   1418 (longest request)
+testing file: 1-120kmh.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9002
+
+Document Path:          /s2img
+Document Length:        131191 bytes
+
+Concurrency Level:      1
+Time taken for tests:   48.971 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      13134000 bytes
+Total body sent:        4363500
+HTML transferred:       13119100 bytes
+Requests per second:    2.04 [#/sec] (mean)
+Time per request:       489.712 [ms] (mean)
+Time per request:       489.712 [ms] (mean, across all concurrent requests)
+Transfer rate:          261.91 [Kbytes/sec] received
+                        87.02 kb/s sent
+                        348.93 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    3   1.2      3      12
+Processing:   310  486 111.5    497    1377
+Waiting:      231  403 107.3    412    1265
+Total:        313  490 111.4    500    1380
+
+Percentage of the requests served within a certain time (ms)
+  50%    500
+  66%    507
+  75%    513
+  80%    517
+  90%    539
+  95%    585
+  98%    640
+  99%   1380
+ 100%   1380 (longest request)
+testing file: 1-120kmh.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9001
+
+Document Path:          /s2speed
+Document Length:        10999 bytes
+
+Concurrency Level:      1
+Time taken for tests:   86.738 seconds
+Complete requests:      100
+Failed requests:        21
+   (Connect: 0, Receive: 0, Length: 21, Exceptions: 0)
+Total transferred:      1114658 bytes
+Total body sent:        4363700
+HTML transferred:       1099858 bytes
+Requests per second:    1.15 [#/sec] (mean)
+Time per request:       867.377 [ms] (mean)
+Time per request:       867.377 [ms] (mean, across all concurrent requests)
+Transfer rate:          12.55 [Kbytes/sec] received
+                        49.13 kb/s sent
+                        61.68 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        6   21  99.8     11    1009
+Processing:   812  846  27.0    837     935
+Waiting:      770  810  27.3    802     901
+Total:        819  867 106.1    851    1884
+
+Percentage of the requests served within a certain time (ms)
+  50%    851
+  66%    867
+  75%    878
+  80%    882
+  90%    899
+  95%    914
+  98%    944
+  99%   1884
+ 100%   1884 (longest request)
+testing file: 1-120kmh.jpg.json
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking raspberrypi-m2 (be patient).....done
+
+
+Server Software:        Werkzeug/0.9.6
+Server Hostname:        raspberrypi-m2
+Server Port:            9002
+
+Document Path:          /s2speed
+Document Length:        10999 bytes
+
+Concurrency Level:      1
+Time taken for tests:   115.977 seconds
+Complete requests:      100
+Failed requests:        20
+   (Connect: 0, Receive: 0, Length: 20, Exceptions: 0)
+Total transferred:      1128651 bytes
+Total body sent:        4363700
+HTML transferred:       1113851 bytes
+Requests per second:    0.86 [#/sec] (mean)
+Time per request:       1159.774 [ms] (mean)
+Time per request:       1159.774 [ms] (mean, across all concurrent requests)
+Transfer rate:          9.50 [Kbytes/sec] received
+                        36.74 kb/s sent
+                        46.25 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    3   0.9      3       7
+Processing:   779 1156 313.9   1013    1555
+Waiting:      757 1137 314.0    994    1536
+Total:        782 1160 313.9   1016    1558
+
+Percentage of the requests served within a certain time (ms)
+  50%   1016
+  66%   1461
+  75%   1499
+  80%   1507
+  90%   1524
+  95%   1538
+  98%   1552
+  99%   1558
+ 100%   1558 (longest request)
+

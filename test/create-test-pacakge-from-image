@@ -1,21 +1,36 @@
 #!/bin/bash
 
-count=1
-
 for param in "$@"
 do
-    echo "$param"
-    dir=${param%.*}
-    mkdir $dir
-    for (( i=1; i<=$count; i++ )); do
-    	#printf '{"filename": "%s", "image": "%s"}\n' "$i-$param" `base64 $param` > $dir/$i-${param}.json
-	img=`base64 $param | tr -d '\n'`
+    # echo "$param"
+    name=${param%.*}
+    img=`base64 $param | tr -d '\n'`
 
-cat <<EOF > $dir/$i-${param}.json
+cat <<EOF > ${name}.json
 {
-	"filename" : "$i-$param",
+	"filename" : "$param",
 	"image": "$img"
 }
 EOF
-    done
+  echo ${name}.json
 done
+
+# count=1
+#
+# for param in "$@"
+# do
+#     echo "$param"
+#     dir=${param%.*}
+#     mkdir $dir
+#     for (( i=1; i<=$count; i++ )); do
+#     	#printf '{"filename": "%s", "image": "%s"}\n' "$i-$param" `base64 $param` > $dir/$i-${param}.json
+# 	img=`base64 $param | tr -d '\n'`
+#
+# cat <<EOF > $dir/$i-${param}.json
+# {
+# 	"filename" : "$i-$param",
+# 	"image": "$img"
+# }
+# EOF
+#     done
+# done

@@ -2,16 +2,17 @@
 
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
 import os
 import re
 
 # haarCascade = cv2.CascadeClassifier('road-signs-haar-cascade.xml')
 
-detector = None
+orb = None
 try:
-    detector = cv2.ORB_create()
+    orb = cv2.ORB_create()
 except AttributeError:
-    detector = cv2.ORB()
+    orb = cv2.ORB()
 
 def detect_road_signs(image, haarCascade):
     return haarCascade.detectMultiScale(image, 1.1, 3)
@@ -50,112 +51,9 @@ def recognise_road_signs_on_image_and_draw_rectangles(image, haarCascade):
     draw_rectangles_to_image(img, recognisedObjectRectangles)
     return img
 
-def run_flann(img, compare_images):
-    MINKP = 5
-
-    # CHECKS = cv2.getTrackbarPos('FLANNCHECKS','preview')
-    # TREES = cv2.getTrackbarPos('FLANNTREES','preview')
-    # INDEX_PARAMS = dict(algorithm = 0, trees = TREES)
-    # SEARCH_PARAMS = dict(checks=CHECKS)   # or pass empty dictionary
-    # flann = cv2.FlannBasedMatcher(INDEX_PARAMS, SEARCH_PARAMS)
-    FLANNTHRESHOLD=0.8
-
-    # FLANN parameters
-    FLANN_INDEX_KDTREE = 0
-    # index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
-    FLANN_INDEX_LSH = 6
-    index_params= dict(algorithm = FLANN_INDEX_LSH,
-                   table_number = 6, # 12
-                   key_size = 12,     # 20
-                   multi_probe_level = 1) #2
-    search_params = dict(checks=50)   # or pass empty dictionary
-
-    flann = cv2.FlannBasedMatcher(index_params,search_params)
-
-    _, des = detector.detectAndCompute(img, None)
-    if des is None:
-        return "Unknown", 0
-    if len(des) < MINKP:
-        return "Unknown", 0
-
-    biggest_amnt = 0
-    biggest_speed = 0
-    cur_img = 0
-    # try:
-    for _ in compare_images[0]:
-        training_des = compare_images[3][cur_img]
-        # print("compare_images: {}".format(des) )
-        matches = flann.knnMatch(training_des, des, k=2)
-        matchamnt = 0
-        # Find matches with Lowe's ratio test
-        # for _, (moo, noo) in enumerate(matches):
-        for x in matches:
-            if len(x) != 2:
-                continue
-            moo, noo = x
-            # print("matcj: {} -> {}".format(moo.distance, noo.distance))
-            if moo.distance < FLANNTHRESHOLD*noo.distance:
-                matchamnt += 1
-        if matchamnt > biggest_amnt:
-            biggest_amnt = matchamnt
-            biggest_speed = compare_images[1][cur_img]
-        cur_img += 1
-    if biggest_amnt > MINKP:
-        return biggest_speed, biggest_amnt
-    else:
-        return "Unknown", 0
-    # except Exception, exept:
-    #     print exept
-    #     return "Unknown", 0
-
-def run_bf(img, compare_images):
-    MINKP = 5
-
-    FLANNTHRESHOLD=80
-    kp, des = detector.detectAndCompute(img, None)
-
-    if des is None:
-        return "Unknown", 0
-    if len(des) < MINKP:
-        return "Unknown", 0
-
-    biggest_amnt = 0
-    biggest_speed = 0
-    cur_img = 0
-    # try:
-    for _ in compare_images[0]:
-        training_img = compare_images[0][cur_img]
-        training_kp = compare_images[2][cur_img]
-        training_des = compare_images[3][cur_img]
-        # print("compare_images: {}".format(des) )
-        # matches = flann.knnMatch(training_des, des, k=2)
-
-        # create BFMatcher object
-        bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
-        # Match descriptors.
-        matches = bf.match(training_des,des)
-
-        matches = sorted(matches, key = lambda x:x.distance)
-        img3 = drawMatches(img, kp, training_img, training_kp, matches[:10])
-
-        matchamnt = 0
-        # Find matches with Lowe's ratio test
-        for moo in matches:
-            # print("moo.distance: {} - {}".format( moo.distance, FLANNTHRESHOLD))
-            if moo.distance < FLANNTHRESHOLD:
-                # print("biggest_speed: {}".format(compare_images[1][cur_img]))
-                matchamnt += 1
-        if matchamnt > biggest_amnt:
-            biggest_amnt = matchamnt
-            biggest_speed = compare_images[1][cur_img]
-        cur_img += 1
-    if biggest_amnt > MINKP:
-        return biggest_speed, biggest_amnt
-    else:
-        return "Unknown", 0
-    # except Exception, exept:
-    #     print exept
-    #     return "Unknown", 0
+def show_image(img):
+    plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    plt.show()
 
 def drawMatches(img1, kp1, img2, kp2, matches):
     """
@@ -222,9 +120,10 @@ def drawMatches(img1, kp1, img2, kp2, matches):
 
 
     # Show the image
-    cv2.imshow('Matched Features', out)
-    cv2.waitKey(0)
-    cv2.destroyWindow('Matched Features')
+    # cv2.imshow('Matched Features', out)
+    # cv2.waitKey(0)
+    # cv2.destroyWindow('Matched Features')
+    show_image(out)
 
     # Also return the image if you'd like a copy
     return out
@@ -288,11 +187,31 @@ def drawMatchesKnn(img1, kp1, img2, kp2, matches):
 
 
     # Show the image
-    cv2.imshow('Matched Features', out)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow('Matched Features', out)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+    show_image(out)
 
     return out # Return the image
+
+def detectAndComputeSURF(image, parameter = None):
+    return cv2.xfeatures2d.SURF_create().detectAndCompute(image, None)
+
+    surfDetector = cv2.FeatureDetector_create("SURF")
+    # surfDetector.setDouble("hessianThreshold", 1000)
+    surfDescriptorExtractor = cv2.DescriptorExtractor_create("SURF")
+    keypoints = surfDetector.detect(image)
+    (keypoints, descriptors) = surfDescriptorExtractor.compute(image, keypoints)
+    return (keypoints, descriptors)
+
+def detectAndComputeSIFT(image, parameters = None):
+    return cv2.xfeatures2d.SIFT_create().detectAndCompute(image, None)
+
+    siftDetector = cv2.FeatureDetector_create("SIFT")
+    siftDescriptorExtractor = cv2.DescriptorExtractor_create("SIFT")
+    keypoints = siftDetector.detect(image)
+    (keypoints, descriptors) = siftDescriptorExtractor.compute(image, keypoints)
+    return (keypoints, descriptors)
 
 def get_image_matches(img1, img2):
     if img1 is None:
@@ -300,8 +219,8 @@ def get_image_matches(img1, img2):
     if img2 is None:
         print("Image2 not found")
 
-    # Initiate SIFT detector
-    orb = detector
+    # Initiate SIFT orb
+    orb = orb
 
     # find the keypoints and descriptors with SIFT
     kp1, des1 = orb.detectAndCompute(img1,None)
@@ -332,9 +251,6 @@ def get_image_knn_matches(img1, img2):
     thresh = cv2.adaptiveThreshold(blur,255,1,1,11,2)
     img1 = cv2.bitwise_not(thresh)
 
-    # Initiate SIFT detector
-    orb = detector
-
     # find the keypoints and descriptors with SIFT
     kp1, des1 = orb.detectAndCompute(img1,None)
     kp2, des2 = orb.detectAndCompute(img2,None)
@@ -362,7 +278,55 @@ def get_image_knn_matches(img1, img2):
     #        good.append(m)
 
     # Need to draw only good matches, so create a mask
-    matchesMask = [[0,0] for i in xrange(len(matches))]
+    good = []
+    # ratio test as per Lowe's paper
+    for i,mn in enumerate(matches):
+        if len(mn) != 2:
+            continue
+        (m,n) = mn
+        # good.append(m)
+        # print("{}<0.7*{}".format(m.distance, n.distance))
+        if m.distance < 0.7*n.distance:
+        # if m.distance < 50:
+        # if m.distance < 0.7*n.distance and m.distance < 70:
+            good.append(m)
+
+    # Sort them in the order of their distance.
+    # matches = sorted(matches, key = lambda x:x.distance)
+
+    # Draw first 10 matches.
+    # img3 = drawMatches(img1,kp1,img2,kp2,matches[:10])
+
+    # img3 = drawMatches(img1,kp1,img2,kp2,good)
+
+    #img3 = drawMatchesKnn(img1,kp1,img2,kp2,matches)
+
+    return good
+
+def get_image_knn_matches_sift(img1, img2):
+    if img1 is None:
+        print("Image1 not found")
+    if img2 is None:
+        print("Image2 not found")
+
+    # blur = cv2.GaussianBlur(img1,(5,5),0)
+    # thresh = cv2.adaptiveThreshold(blur,255,1,1,11,2)
+    # thresh = cv2.dilate(thresh, None, iterations=2)
+    # img1 = cv2.bitwise_not(thresh)
+
+    # find the keypoints and descriptors with SIFT
+    kp1, des1 = detectAndComputeSIFT(img1,None)
+    kp2, des2 = detectAndComputeSIFT(img2,None)
+
+    # FLANN parameters
+    FLANN_INDEX_KDTREE = 0
+    index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+    search_params = dict(checks=50)   # or pass empty dictionary
+
+    flann = cv2.FlannBasedMatcher(index_params,search_params)
+    matches = flann.knnMatch(des1,des2,k=2)
+
+    # Need to draw only good matches, so create a mask
     good = []
     # ratio test as per Lowe's paper
     for x in enumerate(matches):
@@ -372,22 +336,62 @@ def get_image_knn_matches(img1, img2):
         (m,n) = mn
         # good.append(m)
         # print("{}<0.7*{}".format(m.distance, n.distance))
-        # if m.distance < 0.7*n.distance:
-        # if m.distance < 50:
-        if m.distance < 0.7*n.distance and m.distance < 70:
-            matchesMask[i]=[1,0]
+        if m.distance < 0.8*n.distance:
             good.append(m)
 
-    # Sort them in the order of their distance.
-    # matches = sorted(matches, key = lambda x:x.distance)
+    img3 = drawMatches(img1,kp1,img2,kp2,good)
+    #img3 = drawMatchesKnn(img1,kp1,img2,kp2,matches)
 
-    # Draw first 10 matches.
-    # img3 = drawMatches(img1,kp1,img2,kp2,matches[:10])
-    # img3 = drawMatches(img1,kp1,img2,kp2,good)
+    return good
+
+def get_image_knn_matches_surf(img1, img2):
+    if img1 is None:
+        print("Image1 not found")
+    if img2 is None:
+        print("Image2 not found")
+
+    # blur = cv2.GaussianBlur(img1,(5,5),0)
+    # thresh = cv2.adaptiveThreshold(blur,255,1,1,11,2)
+    # img1 = cv2.bitwise_not(thresh)
+
+    # find the keypoints and descriptors with SIFT
+    kp1, des1 = detectAndComputeSURF(img1,None)
+    kp2, des2 = detectAndComputeSURF(img2,None)
+
+    # FLANN parameters
+    FLANN_INDEX_KDTREE = 0
+    index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+    search_params = dict(checks=50)   # or pass empty dictionary
+
+    flann = cv2.FlannBasedMatcher(index_params,search_params)
+    matches = flann.knnMatch(des1,des2,k=2)
+    # return matches
+    # Apply ratio test
+    # good = []
+    # for m,n in matches:
+    #     if m.distance < 0.75*n.distance:
+    #        # Removed the brackets around m
+    #        good.append(m)
+
+    # Need to draw only good matches, so create a mask
+    good = []
+    # ratio test as per Lowe's paper
+    for x in enumerate(matches):
+        i,mn = x
+        if len(mn) != 2:
+            continue
+        (m,n) = mn
+        # good.append(m)
+        # print("{}<0.7*{}".format(m.distance, n.distance))
+        if m.distance < 0.7*n.distance:
+        # if m.distance < 50:
+        # if m.distance < 0.7*n.distance and m.distance < 70:
+            good.append(m)
+
+    img3 = drawMatches(img1,kp1,img2,kp2,good)
     #img3 = drawMatchesKnn(img1,kp1,img2,kp2,matches)
 
     return good;
-
 
 def get_speed_for_image(img_gray, img_trian_array):
     results = dict()
@@ -419,15 +423,17 @@ def match_speed_image(img_gray, img_train_path):
     sum = 0
     count = len(matches)
 
+    distances = []
     for moo in matches:
+        distances.append(round(moo.distance,1))
         sum = sum + moo.distance
 
     if count == 0:
         avg = 0
     else:
-        avg = sum/count
+        avg = round(sum/count,1)
 
-    print("Matches count for {}: {}, avg: {}".format(speed_number, count, avg))
+    print("Matches count for {}: {}, avg: {} {}".format(speed_number, count, avg, distances))
     return matches
 
 def read_paths(path):
@@ -436,12 +442,12 @@ def read_paths(path):
         for subdirname in dirnames:
             filepath = os.path.join(dirname, subdirname)
             for filename in os.listdir(filepath):
-                try:
-                    imgpath = str(os.path.join(filepath, filename))
-                    images.append(imgpath)
-                except IOError, (errno, strerror):
-                    print "I/O error({0}): {1}".format(errno, strerror)
-                except:
-                    print "Unexpected error:", sys.exc_info()[0]
-                    raise
+            # try:
+                imgpath = str(os.path.join(filepath, filename))
+                images.append(imgpath)
+            # except IOError, (errno, strerror):
+            #     print "I/O error({0}): {1}".format(errno, strerror)
+            # except:
+            #     print "Unexpected error:", sys.exc_info()[0]
+            #     raise
     return images

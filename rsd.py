@@ -2,7 +2,7 @@
 
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import os
 import re
 
@@ -52,8 +52,9 @@ def recognise_road_signs_on_image_and_draw_rectangles(image, haarCascade):
     return img
 
 def show_image(img):
-    plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-    plt.show()
+    print("Not showing image")
+    #plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    #plt.show()
 
 def drawMatches(img1, kp1, img2, kp2, matches):
     """
@@ -405,9 +406,11 @@ def get_speed_for_image(img_gray, img_trian_array):
         matches = match_speed_image(img_gray, img_path)
         results[speed_number] = len(matches)
 
-    speeds_hits_sorted = sorted(results.items(), key=lambda x: x[1])
+    # speeds_hits_sorted = sorted(results.items(), key=lambda x: x[1])
+    speeds_hits_sorted = sorted(results.items(), key=lambda(k, v): (v, int(k)))
+    print("speeds_hits_sorted:" + str(speeds_hits_sorted))
     speed,count = speeds_hits_sorted[len(speeds_hits_sorted)-1]
-    if count < 3:
+    if count <= 3:
         return '-'
     return speed
 

@@ -33,8 +33,15 @@ def s2img():
     json_data = imageops.get_request_rest_image_data(request, volume_dir)
     image_arr = np.fromstring (json_data['image'], np.uint8)
     image = cv2.imdecode(image_arr, CV_LOAD_IMAGE_COLOR)
-    images_all = np.concatenate(rsd.recognise_road_signs_on_image(image, haarCascade), axis=1)
-    return jsonify(imageops.create_response("-", images_all))
+    images_cropped = rsd.recognise_road_signs_on_image(image, haarCascade)
+
+    good_images=images_cropped
+    images_all_raw = None
+    if len(good_images) != 0:
+        images_all = np.concatenate(good_images, axis=1)
+        images_all_raw = cv2.imencode('.jpg',images_all)[1]
+
+    return jsonify(imageops.create_response("-", images_all_raw))
 
 @app.route('/s2speed', methods=['POST'])
 def s2speed():
